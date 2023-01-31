@@ -16,6 +16,7 @@
       flex-grow: 2;
     }
     .button-area {
+      display: flex;
       background-color: black;
     }
     .button-player {
@@ -28,6 +29,9 @@
     .button-icon {
       color: white;
       font-size: 200%;
+    }
+    .space-fill {
+      flex-grow: 3;
     }
   </style>
   <meta charset="utf-8">
@@ -49,6 +53,10 @@
       </button>
       <button class="js-volume-button button-player">
         <i class="fa fa-volume-off button-icon" aria-hidden="true"></i>
+      </button>
+      <div class="space-fill"></div>
+      <button class="js-fullscreen-button button-player">
+        <i class="fa fa-arrows-alt button-icon" aria-hidden="true"></i>
       </button>
     </div>
 
