@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Пример подключения плеера</title>
+  <link rel="stylesheet" href="static/css/font-awesome.min.css">
+  <style type="text/css">
+    .player {
+      width: 800px;
+      height: 600px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      box-shadow: 0 0 10px rgba(0,0,0,0.7);
+    }
+    .player-container {
+      flex-grow: 2;
+    }
+    .button-area {
+      display: flex;
+      background-color: black;
+    }
+    .button-player {
+      border-style: none;
+      width: 40px;
+      cursor: pointer;
+      background-color: transparent;
+      margin-left: 10px;
+    }
+    .button-icon {
+      color: white;
+      font-size: 200%;
+    }
+    .space-fill {
+      flex-grow: 3;
+    }
+  </style>
+  <meta charset="utf-8">
+</head>
+<body>
+  <div id="player" class="player">
+
+    <div class="js-video-container player-container"></div>
+
+    <div class="button-area">
+      <button class="js-play-button button-player">
+        <i class="fa fa-play button-icon" aria-hidden="true"></i>
+      </button>
+      <button class="js-pause-button button-player" hidden>
+        <i class="fa fa-pause button-icon" aria-hidden="true"></i>
+      </button>
+      <button class="js-mute-button button-player"hidden>
+        <i class="fa fa-volume-up button-icon" aria-hidden="true"></i>
+      </button>
+      <button class="js-volume-button button-player">
+        <i class="fa fa-volume-off button-icon" aria-hidden="true"></i>
+      </button>
+      <div class="space-fill"></div>
+      <button class="js-fullscreen-button button-player">
+        <i class="fa fa-arrows-alt button-icon" aria-hidden="true"></i>
+      </button>
+    </div>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://unpkg.com/playable@2.10.3/dist/statics/playable.bundle.min.js"></script>
+  <script src="static/js/player.js"></script>
+
+  <script type="text/javascript">
+    createPlayer({
+      elementId: 'player',
+      src: 'https://dvmn.org/media/filer_public/d0/16/d016d9b8-4180-4bb9-ad83-0241f61627b8/samsung_demo_-_alive_in_color.mp4',
+    });
+  </script>
+
+</body>
+</html>
