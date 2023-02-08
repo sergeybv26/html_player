@@ -1,11 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
+  <meta charset="utf-8">
   <title>Видеоплеер</title>
   <link rel="stylesheet" href="static/css/font-awesome.min.css">
   <link rel="icon" type="image/png" sizes="32x32" href="static/img/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="static/img/favicon-16x16.png">
-  <style type="text/css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    button::-moz-focus-inner,
+    [type="button"]::-moz-focus-inner,
+    [type="reset"]::-moz-focus-inner,
+    [type="submit"]::-moz-focus-inner {
+      border-style: none;
+      padding: 0;
+    }
     .player {
       width: 800px;
       height: 600px;
@@ -30,12 +41,59 @@
       background-color: transparent;
       font-size: 20px;
       color: white;
+      margin-bottom: 2px;
     }
-    .space-fill {
+    .viewing-panel {
+      display: flex;
+      align-items: center;
       flex-grow: 3;
+      color: white;
+      font-family: 'Roboto', sans-serif;
+      margin-bottom: 4px;
+      margin-left: 5px;
+    }
+    .button-volume {
+      padding-left: 11px;
+    }
+    .viewing-progressbar {
+      background-color: black;
+      flex-grow: 3;
+      margin-right: 15px;
+      display: flex;
+      align-items: center;
+    }
+    .progress-slider {
+      background-color: #f8104d;
+      height: 5px;
+      margin-left: 10px;
+      border-radius: 5px;
+    }
+    .video-duration {
+      padding-right: 2px;
+    }
+    .navigate-marker {
+      height: 9px;
+      width: 9px;
+      background-color: #f8104d;
+      border-radius: 50%;
+      display: inline-block;
+      border-style: solid;
+      border-color: white;
+      border-width: 3px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      margin-left: -8px;
+      opacity: 0;
+      transition-property: opacity;
+      transition-duration: 300ms;
+      transition-timing-function: ease-in;
+    }
+    .button-area:hover .navigate-marker {
+      opacity: 1;
+      transition-property: opacity;
+      transition-duration: 300ms;
+      transition-timing-function: ease-out;
     }
   </style>
-  <meta charset="utf-8">
 </head>
 <body>
   <div id="player" class="player">
@@ -49,16 +107,29 @@
       <button class="js-pause-button button-player" hidden>
         <i class="fa fa-pause" aria-hidden="true"></i>
       </button>
-      <button class="js-mute-button button-player"hidden>
+      <button class="js-mute-button button-player button-volume" hidden>
         <i class="fa fa-volume-up" aria-hidden="true"></i>
       </button>
-      <button class="js-volume-button button-player">
+      <button class="js-volume-button button-player button-volume">
         <i class="fa fa-volume-off" aria-hidden="true"></i>
       </button>
-      <div class="space-fill"></div>
+      <div class="viewing-panel">
+        <div class="js-current-time viewing-time"></div>
+        <div class="js-progress viewing-progressbar">
+          <div class="js-progress-slider progress-slider"></div>
+          <div class="navigate-marker">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <div class="js-duration video-duration"></div>
+      </div>
       <button class="js-fullscreen-button button-player">
         <i class="fa fa-arrows-alt" aria-hidden="true"></i>
       </button>
+      
     </div>
 
   </div>
@@ -67,7 +138,7 @@
   <script src="https://unpkg.com/playable@2.10.3/dist/statics/playable.bundle.min.js"></script>
   <script src="static/js/player.js"></script>
 
-  <script type="text/javascript">
+  <script>
     createPlayer({
       elementId: 'player',
       src: 'https://dvmn.org/media/filer_public/d0/16/d016d9b8-4180-4bb9-ad83-0241f61627b8/samsung_demo_-_alive_in_color.mp4',
