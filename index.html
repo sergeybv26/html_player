@@ -5,6 +5,9 @@
   <link rel="stylesheet" href="static/css/font-awesome.min.css">
   <link rel="icon" type="image/png" sizes="32x32" href="static/img/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="static/img/favicon-16x16.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <style type="text/css">
     .player {
       width: 800px;
@@ -32,11 +35,27 @@
       color: white;
       margin-bottom: 2px;
     }
-    .space-fill {
+    .viewing-panel {
+      display: flex;
+      align-items: center;
       flex-grow: 3;
+      color: white;
+      font-family: 'Roboto', sans-serif;
+      margin-bottom: 4px;
+      margin-left: 5px;
     }
     .button-volume {
       padding-left: 11px;
+    }
+    .viewing-progressbar {
+      background-color: black;
+      flex-grow: 3;
+    }
+    .progress-slider {
+      background-color: #f8104d;
+    }
+    .video-duration {
+      padding-right: 2px;
     }
   </style>
   <meta charset="utf-8">
@@ -59,7 +78,15 @@
       <button class="js-volume-button button-player button-volume">
         <i class="fa fa-volume-off" aria-hidden="true"></i>
       </button>
-      <div class="space-fill"></div>
+      <div class="viewing-panel">
+        <div class="js-current-time viewing-time"></div>
+        <div class="js-progress viewing-progressbar">
+          <div class="js-progress-slider progress-slider">
+            Прогресс
+          </div>
+        </div>
+        <div class="js-duration video-duration"></div>
+      </div>
       <button class="js-fullscreen-button button-player">
         <i class="fa fa-arrows-alt" aria-hidden="true"></i>
       </button>
