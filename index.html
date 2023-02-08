@@ -74,6 +74,16 @@
       border-width: 3px;
       box-shadow: 0 0 10px rgba(0,0,0,0.5);
       margin-left: -8px;
+      opacity: 0;
+      transition-property: opacity;
+      transition-duration: 300ms;
+      transition-timing-function: ease-in;
+    }
+    .button-area:hover .navigate-marker {
+      opacity: 1;
+      transition-property: opacity;
+      transition-duration: 300ms;
+      transition-timing-function: ease-out;
     }
   </style>
   <meta charset="utf-8">
