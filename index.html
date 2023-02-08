@@ -50,12 +50,30 @@
     .viewing-progressbar {
       background-color: black;
       flex-grow: 3;
+      margin-right: 15px;
+      display: flex;
+      align-items: center;
     }
     .progress-slider {
       background-color: #f8104d;
+      height: 5px;
+      margin-left: 10px;
+      border-radius: 5px;
     }
     .video-duration {
       padding-right: 2px;
+    }
+    .navigate-marker {
+      height: 9px;
+      width: 9px;
+      background-color: #f8104d;
+      border-radius: 50%;
+      display: inline-block;
+      border-style: solid;
+      border-color: white;
+      border-width: 3px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      margin-left: -8px;
     }
   </style>
   <meta charset="utf-8">
@@ -81,8 +99,12 @@
       <div class="viewing-panel">
         <div class="js-current-time viewing-time"></div>
         <div class="js-progress viewing-progressbar">
-          <div class="js-progress-slider progress-slider">
-            Прогресс
+          <div class="js-progress-slider progress-slider"></div>
+          <div class="navigate-marker">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
         </div>
         <div class="js-duration video-duration"></div>
@@ -90,6 +112,7 @@
       <button class="js-fullscreen-button button-player">
         <i class="fa fa-arrows-alt" aria-hidden="true"></i>
       </button>
+      
     </div>
 
   </div>
